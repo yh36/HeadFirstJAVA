@@ -4,9 +4,11 @@ public class SimpleDotCom {
 
 	// ********** Instance Variable Declaration **********//
 	// Declare an int array to hold the location cells. Call it location Cells.
+	int[] locationCells;
 
-	// Declare an int to hold the number of htis. Call it numOfHits and SET it
+	// Declare an int to hold the number of hits. Call it numOfHits and SET it
 	// to 0
+	int numOfHits = 0;
 
 
 	// ********** Method Declaration & Logic **********//
@@ -24,6 +26,26 @@ public class SimpleDotCom {
 	// IF number of hits is 3. RETURN "kill"
 	// ELSE RETURN "hit"
 	// ELSE the user guess did not match, RETURN "miss"
+	public String checkYourself(String userGuess) {
+		int guess = Integer.parseInt(userGuess);
+		String result = "miss";
+		
+		for (int cell : locationCells) {
+			if (guess == cell) {
+				result = "hit";
+				numOfHits++;
+				break;
+			}
+		}
+		
+		if (numOfHits == locationCells.length) {
+			result = "kill";
+		}
+		
+		System.out.println(result);
+		
+		return result;
+	}
 
 
 	// void setLocationCells(int[] cellLocations)
@@ -32,5 +54,7 @@ public class SimpleDotCom {
 	// GET the cell locations as an int array parameter
 	// ASSIGN the cell locations paramter to the cell locations instance
 	// variable
-
+	public void setLocationCells(int[] locs) {
+		locationCells = locs;
+	}
 }
